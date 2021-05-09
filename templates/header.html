@@ -1,0 +1,108 @@
+<style type="text/css">
+.navbar{
+width: 100% !important;
+margin-left: auto !important;
+margin-right: auto !important;
+
+}
+.footer{
+width: 100% !important;
+margin-left: auto !important;
+margin-right: auto !important;
+text-align: center; !important;
+bottom: 0 !important;
+
+}
+
+</style>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="background-color:#211f1f !important;font-size:1.2em;padding-left:10% !important;">
+  <a class="navbar-brand" href="#"><img src="static\images\logo5.png" style="height:50px;width:230px;"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto" >
+      <li class="nav-item">
+        <a class="nav-link" href="/" onMouseOver="this.style.color='#696041'" onMouseOut="this.style.color='#C7AB4B'" style="color:#C7AB4B !important; font-weight: bold  !important;">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/products" onMouseOver="this.style.color='#696041'" onMouseOut="this.style.color='#C7AB4B'" style="color:#C7AB4B !important; font-weight: bold  !important;">Products</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/mlogin" onMouseOver="this.style.color='#696041'" onMouseOut="this.style.color='#C7AB4B'" style="color:#C7AB4B !important; font-weight: bold  !important;">Admin Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/apply" onMouseOver="this.style.color='#696041'" onMouseOut="this.style.color='#C7AB4B'" style="color:#C7AB4B !important; font-weight: bold  !important;">Subsidy</a>
+      </li>
+
+      <li class="nav-item" >
+        <a class="nav-link" href="#" onMouseOver="this.style.color='#696041'" onMouseOut="this.style.color='#C7AB4B'" data-toggle="modal" data-target="#exampleModalLong" style="color:#C7AB4B !important; font-weight: bold  !important;">Login</a>
+        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div style="background-color:#E4DBBE !important;" class="modal-content">
+      <div style="background-color:#B3A46B !important;" class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle" >Login</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="login_add" method="post">
+          Email ID:<br>
+          <input placeholder="Email" type="text" name="email">
+          <br>
+          Password:<br>
+          <input placeholder="Password" type="password" name="password">
+          <br><br>
+          <button type="submit" class="btn btn-dark">Submit</button>
+      </form>
+      <div class="modal-footer">
+        <a href="/register"><button type="button" class="btn btn-dark" >New User? Register</button></a>
+      </div>
+      </div>
+      {% if customer_info %}
+      <li class="nav-item dropdown" >
+        <a onMouseOver="this.style.color='#696041'" onMouseOut="this.style.color='#C7AB4B'" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:#C7AB4B !important; font-weight: bold  !important;" >
+          Hi {{customer_info[0]['name']}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color:#C7AB4B !important;">
+          <a onMouseOver="this.style.backgroundColor='#CEC9AD'" onMouseOut="this.style.backgroundColor='#C7AB4B'" class="dropdown-item" href="/orders" style="color:#1c1b1b !important; font-weight: bold  !important;">Orders</a>
+          <a onMouseOver="this.style.backgroundColor='#CEC9AD'" onMouseOut="this.style.backgroundColor='#C7AB4B'" class="dropdown-item" href="/account" style="color:#1c1b1b !important; font-weight: bold  !important;">My Account</a>
+          <a onMouseOver="this.style.backgroundColor='#C7AB4B'" onMouseOut="this.style.backgroundColor='#C7AB4B'" class="dropdown-item" href="#">
+          <form action="dropsession">
+            <button onMouseOver="this.style.backgroundColor='#CEC9AD'" onMouseOut="this.style.backgroundColor='#C7AB4B'" class="dropdown-item" type="submit" href="#" style="color:#1c1b1b !important; font-weight: bold  !important;">Logout</button>
+          </form>
+          </a>
+      </li>
+      {% else %}
+        <li class="nav-item">
+        <a class="nav-link" href="#" style="color:#C7AB4B !important; font-weight: bold  !important;">Hello! Guest</a>
+      </li>
+      {% endif %}
+</nav>
+<div class="container" style="min-height:100% width:80%">
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-warning alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+      {{message}}
+      </div>
+    {% endfor %}
+    {% endif %}
+  {% endwith %}
+  {% block body %}{% endblock %}
+  </div>
+<style>
+  </style>
+{% block real_content %}
+{% endblock %}
+
+<footer class="footer bg-dark" style="padding:8px; background-color:#211f1f  !important;">
+  <div class="container">
+    <span class="text-muted">Developed by Diya Sanghvi(4SO18CS038)</span>
+  </div>
+</footer>

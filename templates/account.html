@@ -1,0 +1,49 @@
+{% extends "header.html" %}
+{% block real_content %}
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+<style>
+#cp{
+
+  display: table;
+   margin: 0 auto;
+}
+#cp1{
+  margin-left:auto;
+  margin-right:auto;
+  position:relative;
+}
+</style>
+<body style="background-color:#E4DBBE  !important;">
+  <br><br>
+  <div class="container">
+  <div style="font-weight:550  !important; border: 4px solid black;" class="card" id="cp1" style="width: 18rem;">
+  <div style="background-color: #B3A46B !important;font-size:1.2em;" class="card-header">
+    Account Details
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Name: {{customer_info[0].name}}</li>
+    <li class="list-group-item">Customer ID: {{customer_info[0].cid}}</li>
+    <li class="list-group-item">Address: {{customer_info[0].address}}</li>
+    <li class="list-group-item">Email: {{customer_info[0].email}}</li>
+    <li class="list-group-item">Phone Number: {{customer_info[0].phno}}</li>
+    {% if customer_info[0].subsidy == 1 %}
+    <li class="list-group-item">Subsidy: Approved</li>
+    {% else %}
+    <li class="list-group-item">Subsidy: Not Approved</li>
+    {% endif %}
+  </ul>
+</div>
+</div>
+<br><br>
+<a href="/pchange"><button type="button" class="btn btn-dark" id="cp">Change Password</button></a>
+<br><br>
+
+</body>
+</html>
+{% endblock %}
